@@ -13,27 +13,11 @@ struct UserAlbum: Codable {
     
 }
 
-extension Album {
-    enum CodingKeys: String, CodingKey {
-        case id
-        case userId
-        case title
-    }
-}
-
 struct Album: Codable {
     var id: Int
     var userId: Int
     var title: String
 }
-
-extension UserAlbum {
-    enum CodingKeys: String, CodingKey {
-        case data
-    }
-}
-
-
 
 struct FailableDecodable<Base : Decodable> : Decodable {
     
@@ -72,5 +56,19 @@ struct FailableCodableArray<Element : Codable> : Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(elements)
+    }
+}
+
+extension Album {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userId
+        case title
+    }
+}
+
+extension UserAlbum {
+    enum CodingKeys: String, CodingKey {
+        case data
     }
 }

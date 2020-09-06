@@ -47,9 +47,6 @@ class UserInformationViewContoller: UIViewController, UITableViewDelegate, UITab
         
         APIManager.sharedInstance.getPostWithIdForUsers(postId: postId, onSuccess: { data in
             DispatchQueue.main.async {
-            
-        
-                
                 do {
                     let decoder = JSONDecoder()
                     let model = try decoder.decode(User.self, from: data)
@@ -77,8 +74,6 @@ class UserInformationViewContoller: UIViewController, UITableViewDelegate, UITab
             DispatchQueue.main.async {
                 
                 do {
-                    
-                    
                     let products = try JSONDecoder()
                         .decode([FailableDecodable<Album>].self, from: data)
                         .compactMap { $0.base }
@@ -94,8 +89,6 @@ class UserInformationViewContoller: UIViewController, UITableViewDelegate, UITab
                 } catch let parsingError {
                     print("Error", parsingError)
                 }
-                
-                
             }
         }, onFailure: { error in
             let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)

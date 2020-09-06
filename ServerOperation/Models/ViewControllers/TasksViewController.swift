@@ -41,8 +41,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             DispatchQueue.main.async {
                 
                 do {
-                    
-                    
                     let products = try JSONDecoder()
                         .decode([FailableDecodable<Task>].self, from: data)
                         .compactMap { $0.base } // .flatMap in Swift 4.0
@@ -94,9 +92,5 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tasksBodyLabel.text = "Body: \(tasksRow.body)"
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }

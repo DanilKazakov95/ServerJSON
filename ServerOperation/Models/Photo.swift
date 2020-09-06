@@ -13,17 +13,17 @@ struct UserPhoto: Codable {
     let data: [Photo]
 }
 
-extension UserPhoto {
-    enum CodingKeys: String, CodingKey {
-        case data
-    }
-}
-
 struct Photo: Codable {
     var albumId: Int
     var id: Int
     var title: String
     var url: String
+}
+
+extension UserPhoto {
+    enum CodingKeys: String, CodingKey {
+        case data
+    }
 }
 
 extension Photo {

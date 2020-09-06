@@ -15,15 +15,11 @@ class AlbumCollectionViewController: UICollectionViewController {
     //MARK: - JSON Parse
     
     func getPhotosJSONInformation(){
-        
         let postId = gettingIDFromUserInfo
-        
         APIManager.sharedInstance.getPostForPhotos(postId: postId, onSuccess: { data in
             DispatchQueue.main.async {
                 
                 do {
-                    
-                    
                     let products = try JSONDecoder()
                         .decode([FailableDecodable<Photo>].self, from: data)
                         .compactMap { $0.base } // .flatMap in Swift 4.0
@@ -40,8 +36,6 @@ class AlbumCollectionViewController: UICollectionViewController {
                 } catch let parsingError {
                     print("Error", parsingError)
                 }
-                
-                
             }
         }, onFailure: { error in
             let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
@@ -60,7 +54,6 @@ class AlbumCollectionViewController: UICollectionViewController {
         
         let photosRow = photos[indexPath.row]
         let url = "\(photosRow.url)"
-        
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         
@@ -72,6 +65,7 @@ class AlbumCollectionViewController: UICollectionViewController {
 }
 
 extension UIImageView {
+    
     func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -86,6 +80,7 @@ extension UIImageView {
             }
             }.resume()
     }
+    
     func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)

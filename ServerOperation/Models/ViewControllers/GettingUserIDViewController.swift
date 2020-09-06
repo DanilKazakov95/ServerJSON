@@ -22,7 +22,6 @@ class GettingUserIDViewController: UIViewController {
     }
     
     @IBAction func goToNextView(_ sender: Any) {
-        
         let gettingUserId = textField.text
         let gettingUserIdAsInteger = Int(gettingUserId!)
         if gettingUserIdAsInteger == nil{

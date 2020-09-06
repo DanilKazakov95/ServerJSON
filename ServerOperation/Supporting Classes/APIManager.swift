@@ -11,10 +11,6 @@ class APIManager: NSObject {
     
     let baseURL = "https://jsonplaceholder.typicode.com"
     
-    
-    // Singleton - шаблон программирование
-    // Одиночка
-    
     static let sharedInstance = APIManager()
     static let getPostsEndPointForUsers = "/users/"
     static let getPostEndPointForAlbums = "/albums?userId="
