@@ -61,25 +61,22 @@ class NoteForTasksViewController: UIViewController {
             if let response = response {
                 print(response)
             }
+            
             if let data = data {
-                
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     print(json)
                     
-
                     let newTask = try JSONDecoder()
                         .decode(Task.self, from: data)
                     
                     print(newTask)
                     let info = newTask
                     self.delegate?.getNewTask(info: info)
-
-                    
                 } catch {
                     print(error)
                 }
             }
-            }.resume()
+        }.resume()
     }
 }

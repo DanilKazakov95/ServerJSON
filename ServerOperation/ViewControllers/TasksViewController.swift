@@ -43,7 +43,7 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 do {
                     let products = try JSONDecoder()
                         .decode([FailableDecodable<Task>].self, from: data)
-                        .compactMap { $0.base } // .flatMap in Swift 4.0
+                        .compactMap { $0.base }
                     
                     print(products)
                     
@@ -58,7 +58,6 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 } catch let parsingError {
                     print("Error", parsingError)
                 }
-                
                 
             }
         }, onFailure: { error in

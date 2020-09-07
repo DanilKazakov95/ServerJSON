@@ -10,7 +10,6 @@ import Foundation
 
 struct UserAlbum: Codable {
     let data: [Album]
-    
 }
 
 struct Album: Codable {

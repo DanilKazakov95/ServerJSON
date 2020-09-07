@@ -106,7 +106,7 @@ class UserInformationViewContoller: UIViewController, UITableViewDelegate, UITab
         nameLabel.text = "Name: \(user!.name as String)"
         userNameLabel.text = "Username: \(user!.username as String)"
         emailLabel.text = "Email: \(user!.email as String)"
-        adressLabel.text = "Address: \(user!.address.street as String)"
+        adressLabel.text = "Address: \(user!.address!.street as String)"
         PhoneNumberLabel.text = "Phone: \(user!.phone as String)"
         websiteLabel.text = "Website: \(user!.website as String)"
         if user != nil{
@@ -129,14 +129,14 @@ class UserInformationViewContoller: UIViewController, UITableViewDelegate, UITab
     }
     
     func mapControl(){
-        var longitudeString = user?.address.geo.lng
-        var latitudeSting = user?.address.geo.lat
-        var longitudeDouble = Double(longitudeString!)
-        var latitudeDouble = Double(latitudeSting!)
+        let longitudeString = user?.address!.geo.lng
+        let latitudeSting = user?.address!.geo.lat
+        let longitudeDouble = Double(longitudeString!)
+        let latitudeDouble = Double(latitudeSting!)
         
         
-        var location = CLLocationCoordinate2DMake(latitudeDouble!, longitudeDouble!)
-        var annotation = MKPointAnnotation()
+        let location = CLLocationCoordinate2DMake(latitudeDouble!, longitudeDouble!)
+        let annotation = MKPointAnnotation()
         annotation.coordinate = location
         annotation.title = "User"
         mapKit.addAnnotation(annotation)
@@ -176,7 +176,6 @@ class UserInformationViewContoller: UIViewController, UITableViewDelegate, UITab
         print(albumRow.id)
         thirdview.gettingIDFromUserInfo = albumRow.id
 
-        
         self.navigationController?.pushViewController(thirdview, animated: true)
     }
     @IBAction func openTasks(_ sender: Any) {

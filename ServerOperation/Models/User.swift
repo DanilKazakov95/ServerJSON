@@ -1,13 +1,14 @@
 import Foundation
 
 struct User: Codable {
-    var address: Address
+    var address: Address?
     var email: String
     var id: Int
     var name: String
     var phone: String
     var username: String
     var website: String
+    
 }
 
 struct Address: Codable {
